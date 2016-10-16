@@ -201,8 +201,25 @@ TBitField TBitField::operator~(void) // отрицание
 
 istream &operator>>(istream &istr, TBitField &bf) // ввод
 {
+	char c;
+ 	printf("__Input bietfield__\n");
+ 	printf("lenght of bietfield = %i\n", bf.BitLen);
+ 	for (int i = 0; i < bf.BitLen; i++)
+ 		 {
+ 		printf("bit(%i) = ", i);
+ 		istr >> c;
+ 		if (c == '1') bf.SetBit(i); else bf.ClrBit(i);
+ 		}
+ 	printf("end.\n\n");
+ 	return istr;
 }
 
 ostream &operator<<(ostream &ostr, const TBitField &bf) // вывод
 {
+	ostr << "__Print bietfield__" << endl;
+ 	ostr << "lenght of bietfield = " << bf.BitLen << endl;
+ 	for (int i = 0; i < bf.BitLen; i++)
+ 		 ostr << "bit(" << i << ")= " << bf.GetBit(i) << endl;
+ 	ostr << "end." << endl << endl;
+ 	return ostr;
 }
